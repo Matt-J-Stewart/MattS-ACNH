@@ -1,0 +1,23 @@
+#navbar {
+    background-color: black;
+}
+
+ul {
+    padding: 0px;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 15px 15px;
+}
+
+li {
+    display: inline-block;
+    border-right: solid 1px white;
+}
+
+li:last-child {
+    border-right: none;
+  }
