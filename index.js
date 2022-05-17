@@ -1,5 +1,6 @@
 const express = require('express')
 app = express()
+const getData = require('./static/js/queries.js')
 
 var url = require('url');
 //var dt = require('./date-time');
@@ -10,6 +11,13 @@ const port = process.env.PORT || 3000
 app.use(express.static(__dirname + '/static'))
 
 // The app.get functions below are being processed in Node.js running on the server.
+
+app.get('/allAnimals', async (request, response) => {
+	getData.getAllAnimals(function(dataObj) {
+		response.send(dataObj);
+	});
+})
+
 
 // Return the value of 2 plus 2.
 app.get('/2plus2', (request, response) => {

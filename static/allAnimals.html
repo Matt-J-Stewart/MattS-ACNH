@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Animals</title>
     <link rel="stylesheet" href="./styles/project.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./js/queries.js">
 
     <script>
             $(function() {
@@ -16,8 +16,19 @@
     </script>
 </head>
 <body>
-    <h1>All Animals Holder</h1>
+    <h1 onload="displayAllAnimals()">All Animals Holder</h1>
 
     <div id="navbar"></div>
+
+    <script>
+        async function displayAllAnimals() {
+            // const response = await fetch("allAnimals").
+            // then(response=> response.json()).
+            // then(data => {
+            //     console.log(data);
+            // })
+            console.log("matt");
+        }
+    </script>
 </body>
 </html>
