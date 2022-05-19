@@ -13,9 +13,9 @@ app.use(express.static(__dirname + '/static'))
 // The app.get functions below are being processed in Node.js running on the server.
 
 app.get('/allAnimals', async (request, response) => {
-	getData.getAllAnimals(function(dataObj) {
-		response.send(dataObj);
-	});
+	const text = "hi matt";
+	response.type("text/plain");
+	response.send(text);
 })
 
 
