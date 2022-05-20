@@ -34,7 +34,7 @@
             const response = await fetch("allAnimals").
             then(response=> response.json()).
             then(data => {
-                console.log(data);
+                document.getElementById("animals").innerHTML = data.name;
             })
         }
     </script>
