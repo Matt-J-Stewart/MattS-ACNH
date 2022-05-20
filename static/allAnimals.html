@@ -31,14 +31,11 @@
 
     <script>
         async function displayAllAnimals() {
-            const response = await fetch("allAnimals");
-            const responseText = await response.text();
-            // const response = await fetch("allAnimals").
-            // then(response=> response.json()).
-            // then(data => {
-            //     console.log(data);
-            // })
-            document.getElementById("animals").innerHTML = responseText;
+            const response = await fetch("allAnimals").
+            then(response=> response.json()).
+            then(data => {
+                console.log(data);
+            })
         }
     </script>
 </body>

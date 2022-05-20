@@ -3,6 +3,8 @@ app = express()
 const getData = require('./static/js/queries.js')
 
 var url = require('url');
+const res = require('express/lib/response');
+const { callbackify } = require('util');
 //var dt = require('./date-time');
 
 const port = process.env.PORT || 3000
@@ -13,10 +15,19 @@ app.use(express.static(__dirname + '/static'))
 // The app.get functions below are being processed in Node.js running on the server.
 
 app.get('/allAnimals', async (request, response) => {
-	const text = "hi matt";
-	response.type("text/plain");
-	response.send(text);
+	getData.getData(function(obj1) {
+		response.send(obj1);
+	})
 })
+
+
+app.get('/history', async (request, response) => {
+   
+	getData.getData(function(obj1) {
+	 
+	 response.send(obj1);
+	});
+ })
 
 
 // Return the value of 2 plus 2.
@@ -64,38 +75,6 @@ app.get('/test', (request, response) => {
 
     // Close the response
     response.end('<h3>The End.</h3>');
-})
-
-// Return Batman as JSON.
-var spiderMan = {
-	"firstName":"Bruce",
-	"lastName":"Wayne",
-	"preferredName":"Batman",
-	"email":"darkknight@lewisu.edu",
-	"phoneNumber":"800-bat-mann",
-	"city":"Gotham",
-	"state":"NJ",
-	"zip":"07101",
-	"lat":"40.73",
-	"lng":"-74.17",
-	"favoriteHobby":"Flying",
-	"class":"cpsc-24700-001",
-	"room":"AS-104-A",
-	"startTime":"2 PM CT",
-	"seatNumber":"",
-	"inPerson":[
-		"Monday",
-		"Wednesday"
-	],
-	"virtual":[
-		"Friday"
-	]
-}
-
-app.get('/batman', (request, response) => {
-	console.log('Calling "/batman" on the Node.js server.')
-	response.type('application/json')
-	response.send(JSON.stringify(spiderMan, null, 4))
 })
 
 // Custom 404 page.
