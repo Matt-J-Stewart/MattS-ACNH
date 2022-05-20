@@ -35,7 +35,7 @@
         }
 
         async function displayAllAnimals() {
-            const response = await fetch("allAnimals").
+            const response = await fetch("/allAnimals").
             then(response=> response.json()).
             then(data => {
                 fun(data);
