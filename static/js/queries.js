@@ -7,12 +7,10 @@ function getData(callback) {
     MongoClient.connect(CONNECTION_URL, async function(error,client) {
         var database = client.db(DATABASE_NAME);
         var collection = database.collection("animals");
-        var cursor = collection.find({name: "Great White Shark"}).limit(1);
+        var cursor = collection.find({}, {projection: {_id: 0}});
         var allVals = await cursor.toArray();
-        var testVar = allVals[0];
         client.close();
-        console.log(testVar);
-        callback(testVar);
+        callback(allVals);
     });
 };
 

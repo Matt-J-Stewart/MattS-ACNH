@@ -2,3 +2,26 @@ body {
     background-color: tan;
     
 }
+
+table {
+    background-color: aqua;
+    border-collapse: collapse; /*Otherwise row borders will not appear */
+
+}
+
+tr {
+    border: 5px solid black
+}
+
+tr:nth-child(even) {
+    background-color: aquamarine;
+}
+
+td {
+    padding: 5px 5px;
+    border-right: 2px solid black;
+}
+
+td:last-child {
+    border-right: none;
+}

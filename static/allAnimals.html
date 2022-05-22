@@ -15,7 +15,7 @@
             });
 
             document.addEventListener('DOMContentLoaded', function() {
-                displayAllAnimals();
+                fetchAllAnimals();
             }, false);
 
     </script>
@@ -25,20 +25,41 @@
 
     <div id="navbar"></div>
 
-    <div id="animals"></div>
+    <div id="animals">
+        <table id="animalTable">
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Price</th>
+            </tr>
+        </table>
+    </div>
     
     
 
     <script>
-        function fun(data) {
-            document.getElementById("animals").innerHTML = data.name;
+        function buildTable(data) {
+            var table = document.getElementById("animalTable");
+
+            for(let i = 0; i < data.length; i ++)
+            {
+                let row = document.createElement("tr");
+                var currItem = data[i];
+                for(var key of Object.keys(currItem)) {
+                    let tabData = document.createElement("td");
+                    tabData.innerHTML = currItem[key];
+                    row.appendChild(tabData);
+                }
+                table.appendChild(row);
+            }
+            
         }
 
-        async function displayAllAnimals() {
+        async function fetchAllAnimals() {
             const response = await fetch("/allAnimals").
             then(response=> response.json()).
             then(data => {
-                fun(data);
+                buildTable(data);
             })
         }
     </script>
