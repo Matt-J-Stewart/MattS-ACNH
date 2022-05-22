@@ -17,6 +17,15 @@ tr:nth-child(even) {
     background-color: aquamarine;
 }
 
+th {
+    border-right: 2px solid black;
+    padding: 5px 5px;
+}
+
+th:last-child {
+    border-right: none;
+}
+
 td {
     padding: 5px 5px;
     border-right: 2px solid black;
