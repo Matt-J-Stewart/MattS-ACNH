@@ -6,6 +6,8 @@ body {
 table {
     background-color: aqua;
     border-collapse: collapse; /*Otherwise row borders will not appear */
+    margin-left: auto;
+    margin-right: auto;
 
 }
 

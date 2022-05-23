@@ -22,6 +22,13 @@ function buildTable(data) {
                 tabData.innerHTML = formatTime(currItem.timesAvailable);
                 row.appendChild(tabData);
             }
+            else if(key == "pic") {
+                let picData = document.createElement("img");
+                picData.alt = currItem.name + " picture";
+                picData.src = currItem.pic;
+                tabData.innerHTML = (picData);
+                row.appendChild(tabData);                
+            }
             else {
                 tabData.innerHTML = currItem[key];
                 row.appendChild(tabData);
