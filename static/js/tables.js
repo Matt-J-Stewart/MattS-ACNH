@@ -94,3 +94,58 @@ function formatTime(timeFrame) {
     timeString = timeString.slice(0,-2); //Eliminate trailing comma
     return timeString;
 }
+
+// Function to sort the table based on the header that is clicked.
+function sortTable(n) {
+    var table = document.getElementById("animalTable"); // Retrieve the table information from the DOM
+    var rows = table.rows; // Retrieve array of rows from the table.
+    var switching = true; // Variable to determine when the sort is finished. Acts as a flag.
+    var dir = "asc"; // Direction of the sort.
+    var shouldSwitch; 
+    var switchcount = 0;
+    
+    // While loop that operates until no more swapping is done. 
+    while(switching) {
+
+        switching = false; // Set flag to false.
+
+        // Loop through all the rows, except for the first row containing headers.
+        for(var i = 1; i < rows.length - 1; i++) {
+
+            // Start by saying there whould be no switching.
+            shouldSwitch = false;
+
+            // Get the two pieces of table data that will be compared.
+            x = rows[i].getElementsByTagName("td")[n];
+            y = rows[i + 1].getElementsByTagName("td")[n];
+
+            // If the direction is ascending, check to see if x > y.
+            // If it is, then a switch needs to change and shouldSwitch is flipped to true.
+            // Otherwise, if the direction is descending and x < y, a switch should also occur. 
+            if(dir == "asc") {
+                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+        }
+        // If the shouldSwitch flag has been set, perform the swtich and mark the switch complete.
+        // If the intended direction is desc, then the flag will be flipped after the first iteration of the while loop finishes.
+        if(shouldSwitch) {
+
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); //Swap the elements
+            switching = true; // Revert the flag back to true so the while loop can continue.
+            switchcount++; // Increase this variable. This is used to determine if the direction needs to be changed.
+        } else {
+            if(switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}

@@ -22,6 +22,7 @@ tr:nth-child(even) {
 th {
     border-right: 2px solid black;
     padding: 5px 5px;
+    cursor: pointer;
 }
 
 th:last-child {
